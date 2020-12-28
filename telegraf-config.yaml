@@ -1,0 +1,2 @@
+CMD-LOG-LINE-BEGIN 108 | 2020-12-28 11:56:15,108 | INFO | az_command_data_logger | command args: login --identity
+CMD-LOG-LINE-BEGIN 108 | 2020-12-28 11:56:16,393 | INFO | az_command_data_logger | exit code: 0

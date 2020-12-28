@@ -105,6 +105,15 @@ kubectl create -n $tenant -f $working_dir/jmeter_grafana_deploy.yaml
 
 kubectl create -n $tenant -f $working_dir/jmeter_grafana_svc.yaml
 
+echo "Creating Telegraf"
+
+kubectl create -n $tenant -f $working_dir/telegraf-secrets.yaml
+
+kubectl create -n $tenant -f $working_dir/telegraf-config.yaml
+
+kubectl create -n $tenant -f $working_dir/telegraf-deployment.yaml
+
+
 echo "Printout Of the $tenant Objects"
 
 echo
