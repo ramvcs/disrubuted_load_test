@@ -2,16 +2,15 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: jenkins-pv
-  namespace: poc
 spec:
-  storageClassName: managed-premium
+  storageClassName: jenkins-pv
   accessModes:
     - ReadWriteOnce
   capacity:
     storage: 20Gi
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /var/jenkins_home
+    path: /data/jenkins-volume/
 
 ---
 
