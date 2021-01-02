@@ -19,8 +19,14 @@
             ports:
             - containerPort: 8080
             volumeMounts:
-              - name: jenkins-home
+              - name: jenkins-pv
                 mountPath: /var/jenkins_home
+          securityContext:
+            runAsUser: 1000
+            fsGroup: 1000
+          restartPolicy: Always
+          serviceAccountName: ""
           volumes:
-            - name: jenkins-home
-              emptyDir: {}
+          - name: jenkins-pv
+            persistentVolumeClaim:
+              claimName: jenkins-pvc
