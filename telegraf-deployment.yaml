@@ -13,7 +13,7 @@ spec:
         app: telegraf
     spec:
       containers:
-        - image: anveshvemula/telegraf
+        - image: acrpocs.azurecr.io/telegraf:latest
           name: telegraf
           volumeMounts:
             - mountPath: /etc/telegraf/telegraf.conf

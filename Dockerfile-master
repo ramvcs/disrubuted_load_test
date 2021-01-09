@@ -1,4 +1,4 @@
-FROM kubernautslabs/jmeter-base:latest
-MAINTAINER Kubernauts-lab
+FROM acrpocs.azurecr.io/jemetr-base
+MAINTAINER hums
 		
 EXPOSE 60000

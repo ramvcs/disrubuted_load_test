@@ -15,7 +15,7 @@ spec:
         app: influxdb-jmeter
     spec:
       containers:
-        - image: influxdb
+        - image: acrpocs.azurecr.io/influxdb:latest
           imagePullPolicy: IfNotPresent
           name: influxdb
           volumeMounts:
