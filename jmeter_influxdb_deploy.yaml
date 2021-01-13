@@ -14,15 +14,14 @@ spec:
       labels:
         app: influxdb-jmeter
     spec:
+      volumes:
+      - name: influxdb-pv
+        persistentVolumeClaim:
+          claimName: influxdb-pvc
       containers:
         - image: acrpocs.azurecr.io/influxdb:latest
           imagePullPolicy: IfNotPresent
           name: influxdb
-          volumeMounts:
-          - name: config-volume
-            mountPath: /etc/influxdb
-          - name: influxdb-physical-volume
-            mountPath: /var/lib/influxdb
           ports:
             - containerPort: 8083
               name: influx
@@ -30,10 +29,6 @@ spec:
               name: api
             - containerPort: 2003
               name: graphite
-      volumes:
-      - name: config-volume
-        configMap:
-         name: influxdb-config
-      - name: influxdb-physical-volume
-        persistentVolumeClaim:
-          claimName: influxdb-pvc
+          volumeMounts:
+          - name: influxdb-pv
+            mountPath: /var/lib/influxdb/

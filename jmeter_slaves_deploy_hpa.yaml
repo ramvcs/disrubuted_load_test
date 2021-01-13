@@ -1,16 +1,26 @@
-kind: HorizontalPodAutoscaler 
-apiVersion: autoscaling/v2beta1 
-metadata: 
-  name: jmeter-slaves-hpa 
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: jmeter-slave-hpa
+  labels:
+    jmeter_mode: jmslave-hpa
 spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: jmeter-slave
+  minReplicas: 1
   maxReplicas: 10
-  minReplicas: 1 
-  scaleTargetRef: 
-    apiVersion: app/v1 
-    kind: Deployment 
-    name: jmeter-slaves
-  metrics: 
-  - type: Resource 
-    resource: 
-      name: cpu 
-      targetAverageUtilization: 60
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: AverageValue
+        averageValue: 1000Mi

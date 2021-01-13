@@ -1,17 +1,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: influxdb-physical-volume
-  labels:
-    type: local
+  name: influxdb-pv
 spec:
-  storageClassName: managed-premium
+  storageClassName: azurefile
   capacity:
-    storage: 128Mi
+    storage: 20Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/tmp/influxdb"
+    path: "/var/lib/influxdb/"
 
 ---
 
@@ -20,42 +18,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: influxdb-pvc
 spec:
-  storageClassName: managed-premium
+  storageClassName: azurefile
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 128Mi
-
----
-
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: influxdb-timeshift-proxy-physical-volume
-  labels:
-    type: local
-spec:
-  storageClassName: managed-premium
-  capacity:
-    storage: 128Mi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/tmp/influxdb-timeshift-proxy"
-
----
-
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: influxdb-timeshift-proxy-pvc
-spec:
-  storageClassName: managed-premium
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 128Mi
-
----
+      storage: 20Gi
