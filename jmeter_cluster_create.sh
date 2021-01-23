@@ -76,13 +76,13 @@ kubectl create -n $tenant -f $working_dir/jmeter_master_deploy.yaml
 
 echo "Creating Jenkins"
 
-kubectl create -n $tenant -f $working_dir/jenkins_pvc.yaml
+#kubectl create -n $tenant -f $working_dir/jenkins_pvc.yaml
 
-kubectl create -n $tenant -f $working_dir/jenkins_sa.yaml
+#kubectl create -n $tenant -f $working_dir/jenkins_sa.yaml
 
-kubectl create -n $tenant -f $working_dir/jenkins.yaml
+#kubectl create -n $tenant -f $working_dir/jenkins.yaml
 
-kubectl create -n $tenant -f $working_dir/jenkins_svc.yaml
+#kubectl create -n $tenant -f $working_dir/jenkins_svc.yaml
 
 
 echo "Creating Influxdb and the service"
@@ -107,11 +107,11 @@ kubectl create -n $tenant -f $working_dir/jmeter_grafana_svc.yaml
 
 echo "Creating Telegraf"
 
-#kubectl create -n $tenant -f $working_dir/telegraf-secrets.yaml
+kubectl create -n $tenant -f $working_dir/telegraf-secrets.yaml
 
-#kubectl create -n $tenant -f $working_dir/telegraf-config.yaml
+kubectl create -n $tenant -f $working_dir/telegraf-config.yaml
 
-#kubectl create -n $tenant -f $working_dir/telegraf-deployment.yaml
+kubectl create -n $tenant -f $working_dir/telegraf-deployment.yaml
 
 
 echo "Printout Of the $tenant Objects"
