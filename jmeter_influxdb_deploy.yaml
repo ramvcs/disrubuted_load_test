@@ -19,7 +19,7 @@ spec:
         persistentVolumeClaim:
           claimName: influxdb-pvc
       containers:
-        - image: acrpocs.azurecr.io/influxdb:latest
+        - image: anveshvemula/dlt_influxdb:v1
           imagePullPolicy: IfNotPresent
           name: influxdb
           ports:

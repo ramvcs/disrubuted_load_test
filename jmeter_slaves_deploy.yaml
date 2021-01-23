@@ -17,7 +17,7 @@ spec:
      #restartPolicy: Always
       containers:
       - name: jmslave
-        image: acrpocs.azurecr.io/jemetr-slave:latest
+        image: anveshvemula/dlt_jmeter-slave:v1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 1099

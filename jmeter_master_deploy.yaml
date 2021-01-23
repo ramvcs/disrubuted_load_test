@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: jmmaster
-        image: acrpocs.azurecr.io/jemetr-master:latest
+        image: anveshvemula/dlt_jmeter-master:v1
         imagePullPolicy: IfNotPresent
         command: [ "/bin/bash", "-c", "--" ]
         args: [ "while true; do sleep 30; done;" ]
